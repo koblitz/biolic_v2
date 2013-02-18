@@ -143,6 +143,7 @@ INSTALLED_APPS = (
 	'usuarios',
 	'grmetodos',
 	'guardian',
+	'consultar',
 	
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
