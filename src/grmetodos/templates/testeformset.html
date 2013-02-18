@@ -1,0 +1,24 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+<table  border='1'>
+<form action='.' method='POST'>
+<tr>
+
+<th height='50'>Estações do método {{metogrup|capfirst}}</th>
+<th height='50'>Opções de definição ESPACIAL</th>
+<th height='50'>Opções de definição TEMPORAL</th>
+</tr>
+<tr>
+{%for formt,forme in bothforms%}{%csrf_token%}
+<td><b>{{ formt.initial.metoestat.nome_estac|capfirst }}</b>{% for i in apets%}
+		{%for ii in i %}
+			{%for i3 in ii%}
+	<p>{%if formt.initial.metoestat.nome_estac == i3.metoesta.nome_estac %}
+	<p>-->{%if i3.apettipo.quanttipoapet%}{{i3.apettipo.quanttipoapet}} grupo de {%endif%}{%if i3.apettipo%}{{i3.apettipo}}{%endif%}
+	{%endif%}{%endfor%}{%endfor%}{%endfor%}</td>
+<td>{{formt.arratempesta}}</td>
+<td>{{forme.arraespaesta}}</td>
+</tr>{% endfor %}</table>
+<p><input type="submit" name="form-all-buttom" /></form>
+	
+{%endblock%}

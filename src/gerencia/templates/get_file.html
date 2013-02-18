@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block contents %}
+    {#<!-- List of uploaded documents -->#}
+{%comment%}
+{% if documents %}
+        <ul>
+        {% for document in documents %}
+            <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No documents.</p>
+    {% endif %}
+{%endcomment%}
+<h1>Empreendimento: {{empree|capfirst}}</h1>
+
+
+      <!-- Upload form. Note enctype attribute! -->
+
+
+{%if 'GradesModulos' in modd %}
+        <form action="{% url gerencia:importgrmo empree=empree %}" method="post" enctype="multipart/form-data">
+{%elif 'Trilhas' in modd %}
+        <form action="{% url gerencia:importtril empree=empree %}" method="post" enctype="multipart/form-data">
+{%elif 'Parcelas' in modd %}
+        <form action="{% url gerencia:importparc empree=empree %}" method="post" enctype="multipart/form-data">
+{%elif 'Coordenadas' in modd %}
+        <form action="{% url gerencia:importcoor empree=empree %}" method="post" enctype="multipart/form-data">
+{%elif 'Campanhas' in modd %}
+        <form action="{% url gerencia:importcamp empree=empree %}" method="post" enctype="multipart/form-data">
+{%elif 'Topografias' in modd %}
+        <form action="{% url gerencia:importtopo empree=empree %}" method="post" enctype="multipart/form-data">
+{%elif 'Inclinacoes' in modd %}
+        <form action="{% url gerencia:importincl empree=empree %}" method="post" enctype="multipart/form-data">
+{%elif 'Solos' in modd %}
+        <form action="{% url gerencia:importsolo empree=empree %}" method="post" enctype="multipart/form-data">
+{%else%}
+    {{empree}}   <form action="{% url dados:importfolder empree=empree %}" method="post" enctype="multipart/form-data">
+{%endif%}
+
+
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+            <p>
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+            </p>
+            <p><input type="submit" value="Upload" /></p>
+        </form>
+
+<form action="{% url gerencia:verdoc %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+            <p>
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+            </p>
+            <p><input type="submit" value="observe" /></p>
+        </form>
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+{% endblock %}
+{% block cont1 %}
+ERROS AQUI:
+{% endblock %}
+

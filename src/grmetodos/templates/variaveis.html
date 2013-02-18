@@ -1,0 +1,42 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+<table><td width="500", valign="top">
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+
+</p>
+{%if coll_forms%}
+{%for form in coll_forms%}
+<form action='.' method='POST'>
+	{% csrf_token %}
+	<p>Método:{{ form.metodo }}
+	<p>Variáveis da Planilha Esforço ('esfor.csv'):{{ form.var_esfor }}
+	<p>{{form.var_esfor.help_text}}
+<p>-.-______-.-
+	<p>Variáveis da Planilha Biodiversidade ('biodiv.csv'):<p>{{form.var_biodiv }}
+	<p>{{form.var_biodiv.help_text}}
+
+<br></br>_______________________________________________________________________________
+	{%comment%}{%if form.var_biodiv.help_text%}oadsioadsiodsai
+	<p>{{form.var_biodiv.help_text}}{%endif%}{%endcomment%}
+	{%endfor%}
+<p><input type='submit' value='enviar!' name='enviar' class='button'>
+{%endif%}
+</td><td>
+<p>
+	<a href='{% url consultar:forcsv nomecsv='tbl_atributos' %}'> Salvar a lista </a>
+</p>
+ 
+
+<h2>Atributos possíveis de serem usados:</h2>
+<p>Tipo_Valor: 1-Date, 2-Float, 3-Varchar, 4-Integer, 5-Time, 6-Text.
+<p>Grupo: 1-Animal, 2-Vegetal, 3-Abiotico.
+<p>--<b>nº-nome</b>-->descrição / / legenda. Tipo_Valor. Grupo. Unidade utilizada.
+
+{%for i in tbl_atributos%}
+<p><b>{{forloop.counter}}-{{i.nome_atributo_cabecalho_coluna}}</b>-->{%if i.descricao%}{{i.descricao}}.{%endif%}
+{% if i.legenda %} / / {{i.legenda}}.{%endif%}{%if i.tipo_valor%} Tipo_Valor:{{i.tipo_valor}} {%endif%} {%if i.referencia %}. Grupo: {{i.referencia}}.{%endif%} {%if i.unidade_utilizada %} Unidade: {{i.unidade_utilizada}}.{%endif%}{%endfor%}
+{%endblock%}
+</td></table>
+
+</table>

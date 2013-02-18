@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{%block contents%}
+<p><b>Empreendimento:{{empree|capfirst}}</b>
+<p> <b>A campanha foi apagada e todos os levantamentos relacionados a ela também.</b>
+<p> 
+<p> Deletado:
+<p> Todos os Levantamentos da campanha abaixo foram deletados.
+<p> Campanha: {{num_camp}} do Método: {{met}}
+</p>
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+{%endblock%}

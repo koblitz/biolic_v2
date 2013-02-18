@@ -1,0 +1,13 @@
+{% extends 'consultar.html' %}
+{% block consulta2 %}
+<p>
+	<a href='{% url consultar:meto_query empree %}'> consulte por método </a>
+</p>
+<p>
+	<a href='{% url consultar:loca_query empree %}'> consulte por localidade </a>
+</p>
+<p>
+	<a href='{% url consultar:grup_query empree %}'> consulte por grupo </a>
+</p>
+
+{% endblock %}

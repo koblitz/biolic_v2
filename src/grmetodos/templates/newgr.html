@@ -1,0 +1,72 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+{% if empree %}
+<form action='.' method='POST'>
+<table border='1'><td width="650">
+<h4>Escolha o(s) método(s) que deseja incluir no plano de trabalho</h4>
+	{% csrf_token %}
+	{{ form.as_p }}
+CRIE o(s) método(s) selecionado(s) para o Empreendimento <b>{{empree|capfirst}}</b>:
+<input type="hidden" name="form-type" value"form-form" />
+<input type='submit' value='incluir!' class='button'>
+</form>
+{% endif %}
+
+{% if form2 %}
+_________________________________________________
+<form action='.' method='POST'>
+	{% csrf_token %}
+	{{ form1.as_p }}
+<p>se o empreendimento ainda não está cadastrado, cadastre-o
+	<a href='{% url grmetodos:empree %}'> aqui </a>
+</p>
+<p>escolha os métodos do empreendimento</p>
+	{% csrf_token %}
+	{{ form.as_p }}
+<input type='submit' value='enviar!' class='button'>
+{% endif %}
+
+{% if forms %}
+_______________________________________________________
+{% for values in forms.items %}
+	{% for form in values %}
+	<form action='.' method='POST'>
+	{% csrf_token %}
+	{{ form.as_p }}
+	
+	{% endfor %}
+<input type='submit' value='enviar!' class='button'>
+{% endfor %}
+{% endif %}
+
+{% if not empree %}
+{% if form %}
+_______________________________________________________
+<p>
+<h1>COLOQUE A NOVA INFORMAÇÃO</h1>
+<form action='.' method='POST'>
+	{% csrf_token %}
+	{{ form.as_p }}
+
+<input type='submit' value='enviar!' class='button'>
+{% endif %}
+{% endif %}
+<ul>
+</td>
+<td width="350" valign="top"><p><b>Métodos já inclusos no empreendimento:</b>
+{%for i in mpp%}<p>-->{{i.metodo.metogrup}}{%endfor%}</td></table>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

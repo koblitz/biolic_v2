@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block head %}
+
+<script type= "text/javascript" src="{{ STATIC_URL }}js/jquery.js">
+</script>
+<script>
+$(document).ready(function(){
+   $("a").hide();
+
+	$(".btn2").click(function(){
+  $("a").show();
+  });
+ });
+</script>
+{%endblock%}
+{% block contents %}
+<h3> DEFINA O EMPREENDIMENTO: </h3>
+<form action='.' method='POST'>
+	{% csrf_token %}
+	{{ empree.as_p }}
+
+<input type='submit' value='gerenciar' nome='gerenciar' class='button'>
+<input type='submit' value='consultar' nome='consultar' class='button'>
+	
+</form>
+
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+PAGINA ANTERIOR PARA CONSTRUIR:
+-faça seu login
+-cadastre-se
+{% endblock %}
+

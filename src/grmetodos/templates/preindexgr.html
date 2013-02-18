@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block contents %}
+<p>
+	<a href='{% url grmetodos:empree %}'> inserir um novo empreendimento </a>
+</p>
+<p>
+	<a href='{% url grmetodos:empresa %}'> inserir uma nova empresa </a>
+</p>
+<p>
+	<a href='{% url grmetodos:pltr %}'> montar um plano de trabalho </a>
+</p>
+{% comment %}
+<p>
+	<a href='{% url administra:repor %}'> get report </a>
+</p>
+{% endcomment %}
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+
+</p>
+
+{% endblock %}
+

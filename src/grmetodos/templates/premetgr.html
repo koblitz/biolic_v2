@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block contents %}
+<p>
+{% if metoestass_col %}
+
+{% for met in metoestass_col %}
+<p>{{met}}--entenda <a href='{% url grmetodos:mostraestacao met.id%}'> aqui </a>  essa estação
+{% endfor %}
+{% endif %}
+{% if forms %}
+
+{% for values in forms.items %}
+	{% for form in values %}
+	<form action='.' method='POST'>
+	{% csrf_token %}
+	{{ form.as_p }}
+	
+	{% endfor %}
+
+{% endfor %}
+<input type='submit' value='enviar!' class='button'>
+{% endif %}
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+
+</p>
+<ul>
+{% endblock %}

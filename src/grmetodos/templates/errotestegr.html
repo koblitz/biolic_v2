@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block contents %}
+{%if metemp%}
+{{metemp}}
+{%endif%}
+{{metemp2}}
+{%if metempl%}
+<p>
+____________for i in metemp:
+{% for i in metempl %}
+<p>{{i}}</p>
+aqui
+{% endfor %}{%endif%}
+{% endblock %}

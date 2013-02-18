@@ -1,0 +1,14 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+<p>
+<form action='.' method='POST'>
+
+<h4>Escolha um método que deseja montar/alterar:</h4>
+	{% csrf_token %}
+	{{ form.as_p }}
+MONTE O MÉTODO SELECIONADO PARA O EMPREENDIMENTO <b>{{empree|capfirst}}</b>:
+<input type="hidden" name="montarmetodo" value="montarmetodo" />
+<input type='submit' value='montar!' class='button'>
+</form>
+{% endblock %}
+

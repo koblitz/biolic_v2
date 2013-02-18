@@ -1,0 +1,9 @@
+
+<form action="." method="POST">
+    {% csrf_token %}
+{%for form in coll_form%}
+   <p> {{ form.as_p }}
+{%endfor%}
+    <input type='submit' value='dados' name='dados' class='button'>
+</form>
+

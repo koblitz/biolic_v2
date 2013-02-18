@@ -1,0 +1,14 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+ATENÇÃO! Os nomes das estações podem variar conforme se apague alguma. O objectivo é sempre ter estações começando do 1 e em sequencia.
+<p>Estações de {{metgru}}:
+{{quantapetesta}}
+{%for i in quantapetesta %}
+{%for ii in i%}
+{%if forloop.first%}
+<p><b>{{ii.metoesta}}</b>
+{%endif%}
+<p>{{ii.quantidade}}-->{{ii.apettipo}}
+{%endfor%}{%endfor%}
+{%endblock%}
+

@@ -1,0 +1,12 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+<table><td width="500", valign="top">
+Métodos do empreendimento: <b>{{empree|capfirst}}</b>
+{%for i in metoempr_esc%}<p>--{{i.metogrup}}{%endfor%}
+
+</td>
+<td>
+{% block estacao %}
+{% endblock %}
+</td></table>
+{% endblock %}

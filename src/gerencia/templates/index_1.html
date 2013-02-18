@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block head %}
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#form1").submit(function(){
+     var opt={
+        url:"{% url administra:entrall %}",
+         beforeSend: function(){
+                alert('vai enviar')
+                                },
+                type:"POST",
+                data:$(this).serialize(),
+                success: function(data){
+                    $("#ufo1").html(data.html)
+                                        }
+                }
+     $.ajax(opt);
+return false;
+  });
+});
+</script>
+{% endblock %}
+{% block contents %}
+
+{% if form1 %}
+<h1>Escolha o Empreendimento</h1>
+<form id="form1"action="." method="POST">
+    {% csrf_token %}
+    {{ form1.as_p }}
+<br>
+	Após a escolha do Empreendimento vá para:
+  <p>  <input type="submit" value="ambiente de trabalho" class='button'>
+</form>
+{% endif %}
+
+{% block contents1 %}
+<div id=ufo1></div> {#aqui fica o template que renderiza o form2#}
+
+{% endblock %}
+{% endblock %}
+

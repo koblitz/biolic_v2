@@ -1,0 +1,35 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+
+<table><td width="500", valign="top">
+
+<form action='.' method='POST'>
+{{ coll_form.as_p}}
+<h4>Defina o(s) apetrechos escolhendo a(s) estação(ões) para: {{metodo|capfirst}}:</h4>
+<p> ATENÇÃO:
+<p> As características espaciais e temporais das estações serão definidas na etapa subsequente, como por exemplo número de estações por unidade amostral, dias de amostragem, distancia entre apetrechos.
+
+	{%for form in coll_form%}
+	{% csrf_token %}	
+	<p>{{ form.as_p }}
+	{%if form.help_text%}
+	{%for i3 in form.help_text%}
+	<p>{{i3}}
+		{%endfor%}{%endif%}
+	{%endfor%}
+
+<input type="hidden" name="montarmetodo" value="montarmetodo" />
+<input type='submit' value='incluir!' class='button'>
+</form>
+</td><td
+{%if coll_apetdefis%}
+{% for i in coll_apetdefis%}
+{%for ii in i%}
+{%if forloop.first%}
+<p><b>{{ii.apetrecho}}:</b>
+{%endif%}
+<p>-->{{ii.valor}} {{ii.atriunidespa}} {{ii.outras_caracteristicas}}{%endfor%}
+{%endfor%}
+{%endif%}
+</td>
+{% endblock %}

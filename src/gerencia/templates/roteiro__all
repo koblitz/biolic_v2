@@ -1,0 +1,58 @@
+from dados.views import *; from dados.models import *; from gerencia.models import *; import os; way='empreendimentos/teste1';lista=anadois(way); instdoc=DocumentZip.objects.get(id=182)
+cab_lev=[i.name for i in Levantamentos._meta.fields]
+cab_ani=[i.name for i in AnimaisDados._meta.fields]
+cab_pla=[i.name for i in PlantasDados._meta.fields]
+cab_uaa=[i.name for i in UaAvulsas._meta.fields]
+dic_tipo_vlr={'1':'Date','2':'Float','3':'Varchar','4':'Integer','5':'Time','6':'Text'}
+dic_referencia={'1':'Animais','2':'Plantas','3':'Abioticos'}
+dic_tipo_vlr_test={'1':datetime,'2':float,'3':str,'4':int,'5':time,'6':'Text'}
+
+ll=[]
+for i in lista:
+ for ii in i[1]:
+  ll.append(os.path.join(i[0],ii))
+
+#for way3 in ll:
+
+way3=ll[0]
+with open(way3, 'r') as file0:
+ file1=file0.readlines()
+
+file2=[a for a in file1 if a != '\n'];file2=[i.replace('\"','') for i in file2]
+file2=[i.replace('\n','') for i in file2];file2=[i.replace('\r','') for i in file2]
+file3=[b for b in [i.split(',') for i in file2]]
+metodo=list(way3.split('/'))[-3]
+var_biodiv=Metodosp.objects.get(metodo__metodo=metodo,empreendimento__empreendimento=instdoc.empreendimento).var_biodiv
+var_esfor=Metodosp.objects.get(metodo__metodo=metodo,empreendimento__empreendimento=instdoc.empreendimento).var_esfor
+lt_biodiv=[bio for bio in list(var_biodiv.split(','))]
+lt_esfor=[esf for esf in list(var_esfor.split(','))]
+lt_bio=listalista(lt_biodiv,file3)
+lt_esf=listalista(lt_esfor,file3)
+
+#if lt_bio in EMPTY_VALUES and lt_esf in EMPTY_VALUES:
+# return (lt_bio,lt_esf)
+
+lt_erro_campo=[];lt_certo_campo=[]
+for i in lt_biodiv:
+ i=i.strip()
+ try:
+  atr=Atributos.objects.get(nome_atributo_cabecalho_coluna=i)
+ except: print 'não tem tal o atributo --%s--'%i	
+ dic=dic_tipo_vlr_test[atr.tipo_valor]
+ posicao=lt_biodiv.index(i)
+ if atr.tipo_valor!='6':
+  for ii in file3:
+   if not ii[posicao] in EMPTY_VALUES:
+    if atr.tipo_valor=='5': i3=alteratime(ii[posicao])
+    elif atr.tipo_valor=='1': i3=alteradata(ii[posicao])
+    elif atr.tipo_valor=='4': i3=int(ii[posicao])
+    elif atr.tipo_valor=='3': i3=str(ii[posicao])
+    elif atr.tipo_valor=='2': i3=float(ii[posicao])
+    else: pass
+    if isinstance(i3,dic)==True:
+     lt_certo_campo.append((way3,i,i3,ii[posicao]))
+     print '%s, em: %s -- OK!'%(i,ii[posicao])
+    else: 
+     lt_erro_campo.append((way3,i,i3,ii[posicao]))
+     print '%s não verificado'%ii[posicao]
+

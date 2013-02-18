@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block contents %}
+<p><p>Empreendimento: <b>{{empree}}</b></p>
+<p>_____________________________________________</p>
+--------------PLANO DE TRABALHO
+<p>
+<a href='{% url grmetodos:pltr empree=empree %}'> ESCOLHER os métodos para o PLANO DE TRABALHO </a>
+</p>
+<p>
+<a href='{% url grmetodos:montapltr empree=empree %}'>MONTAR OU ALTERAR os métodos do PLANO DE TRABALHO</a>
+</p>
+<p>
+<a href='{% url grmetodos:apgpltr empree=empree %}'> APAGAR os métodos doPLANO DE TRABALHO</a>
+</p>
+<p>
+<a href='{% url grmetodos:variaveis empree=empree %}'> administrar as variveis de VAR_BIODIV e VAR_ESFOR</a>
+</p>
+<p>
+<a href='{% url grmetodos:montplacamp empree=empree %}'> criar as PLANILHAS DE CAMPO </a>
+</p>
+<p>
+--------------GERENCIAMENTO DAS CAMPANHAS
+<p>
+<a href='{% url dados:eraselevant empree=empree %}'> apagar os levantamentos das CAMPANHAS </a>
+</p>
+<p>
+<a href='{% url dados:erasecamp empree=empree %}'> apagar as CAMPANHAS cadastradas.</a> <font size="2">Voce apaga também todos os levantamentos nela realizados!</font>
+</p>
+<p>
+--------------UPLOAD DAS TABELAS ESPACIAIS <h6>(não se trata de shapefile ou outro dado geoespaciais, mas tratam de localização no espaco)</h6>
+<p>
+<a href='{% url gerencia:importgrmo empree=empree %}'> importar planilha com as informações das GRADE/MODULO </a>
+</p>
+<p>
+<a href='{% url gerencia:importtril empree=empree %}'> importar planilha com as informações das TRILHAS </a>
+</p>
+<p>
+<a href='{% url gerencia:importparc empree=empree %}'> importar planilha com as informações das PARCELAS </a>
+</p>
+<p>
+<a href='{% url gerencia:importcoor empree=empree %}'> importar planilha com as informações das COORDENADAS </a>
+</p>
+<p>
+<a href='{% url gerencia:importcamp empree=empree %}'> importar planilha com as informações das CAMPANHAS </a>
+</p>
+<p>
+<a href='{% url gerencia:importtopo empree=empree %}'> importar planilha com as informações das TOPOGRAFIAS </a>
+</p>
+<p>
+<a href='{% url gerencia:importincl empree=empree %}'> importar planilha com as informações das INCLINAÇÕES </a>
+</p>
+<p>
+<a href='{% url gerencia:importsolo empree=empree %}'> importar planilha com as informações das SOLOS </a>
+</p>
+<p>
+--------------UPLOAD DOS DADOS DE BIODIVERSIDADE E DE ESFORÇO
+<p>
+<a href='{% url dados:importfolder empree=empree %}'> importar planilha com os dados de BIODIVERSIDADE E ESFORCO </a>
+</p>
+--------------VOLTAR!
+<p>
+	<a href='{% url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+{% endblock %}
+

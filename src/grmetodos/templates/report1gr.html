@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% for ii in montaespaestal %}
+	{%if forloop.first %}
+<p><h3>EMPREENDIMENTO:<font size='3'>   {{empree}}</font>
+	</h3>{%endif%}
+{%endfor%}
+{% for ii in montaespaestal %}
+{%if forloop.first %}
+Método:   {{ii.metoesta.metoempr.metogrup.metodo}}  Grupo: {{ii.metoesta.metoempr.metogrup.grupobiotico}}
+<p>{{ii.metoesta.nome_estac}}
+<p>{
+<p>Caracteristicas Espaciais:
+{%endif%}{%endfor%}
+{% for ii in montaespaestal %}
+<p> -->{{ii.arraespaesta}}.  <a href="/metodologia/{{ii.id}}/deletado/"><font size="1">deletar</font> </a>
+{%endfor%}
+<p>Carcaterísticas Temporais:
+{% for ii in montatempestal %}
+<p> -->{{ii.arratempesta}}.  <a href="/metodologia/{{ii.id}}/deletadot/"><font size="1">deletar</font> </a>
+{%endfor%}
+{%for i3 in quantapetesta%}
+<p>{{i3}}
+{%endfor%}
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+{% endblock %}

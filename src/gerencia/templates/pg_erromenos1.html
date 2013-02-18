@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block contents %}
+PG-ERRO
+
+{%for i in lista_erro%}
+	{% if i%}
+		{% if i|checktype = list %}
+			{%for ii in i%}
+				{% if ii%}
+					{% if ii|checktype = list %}
+						{%for i3 in ii%}
+							{%if i3%}
+								{% if i3|checktype = list %}
+									{%for i4 in ii%}
+										{%if i4%}
+											{% if i4|checktype = list %}
+												{%for i5 in ii%}
+													{%if i5%}
+														<p>{{i5|cut:"["|cut:"]"}}
+													{%endif%}
+												{%endfor%}
+											{%else%}
+												<p>{{i4}}{%endif%}{%endif%}{%endfor%}
+								{%else%}
+									<p>{{i3}}{%endif%}{%endif%}{%endfor%}
+					{%else%}
+						<p>{{ii}}{%endif%}{%endif%}{%endfor%}
+		{%else%}
+			<p>{{i}}{%endif%}{%endif%}{%endfor%}
+
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+{% endblock %}

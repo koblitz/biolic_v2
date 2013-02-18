@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+{%if dic_ate%}
+{%for k,v in dic_ate.iteritems%}
+<p>{{k}}-->{{v}}
+{%endfor%}
+{%endif%}
+<p>CHAVE - {{kk}}
+<p>VALOR - {{vv}}
+
+{%endblock%}

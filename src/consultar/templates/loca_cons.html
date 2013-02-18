@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block head %}{{empree}}
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#form1").change(function(){
+     var opt={
+        url:"{%url consultar:loca_query empree%}",
+         {#beforeSend: function(){alert('vai enviar')},#}
+                type:"POST",
+                data:$(this).serialize(),
+                success: function(data){
+                    $("#ufo1").html(data.html)
+                                        }
+                }
+     $.ajax(opt);
+return false;
+  });
+});
+</script>
+{% endblock %}
+{% block contents %}
+<p>
+
+<form id="form1" action="." method="POST">
+   {% csrf_token %}
+    {{ form.as_p }}
+  
+</form>
+
+
+{% block contents1 %}
+<div id=ufo1></div> {#aqui fica o template que renderiza o form2#}
+
+{% endblock %}{%endblock%}
+

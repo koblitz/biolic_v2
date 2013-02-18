@@ -1,0 +1,20 @@
+{% extends 'new.html' %}
+{% block consulta %}
+Voce deseja exportar o resultado em .csv?<a href='{% url consultar:forcsv nomecsv='plano_trabalho' %}'> aqui </a>
+
+<p><b>Empreendimento:{{empree|capfirst}}</b>
+<p><i>Plano de Trabalho da Biota</i>
+{%comment%}
+{%if temp%}{%for i in temp%}
+{%if forloop.first %}
+<p>{{forloop.counter}}) {{i.metoestat|capfirst}}:
+{%else%}
+<p>-->{{i.arratempesta}}{%endif%}
+{%endfor%}
+{%endif%}
+{%if espa%}{%for i in espa%}<p>-->{{i.arraespaesta}}{%endfor%}{%endif%}
+{%for ii in espa%}<p>{{ii}}{%endfor%}{%endcomment%}
+{%for i in consulta%}
+ <p>{{i}}{%endfor%}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block contents %}
+Para {{empree}}:
+{%if lt_import%}
+<p>IMPORTADO COM SUCESSO:
+{% for i in lt_import %}
+<p>{{i}}
+{%endfor%}{%endif%}
+{%if lt_upES%}
+{%for i in lt_upES%}
+<p>{{i}}
+{%endfor%}
+{%endif%}
+<p>
+<p>
+	<a href='/'> voltar a pg inicial </a>
+</p>
+
+{% endblock %}
+

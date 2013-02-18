@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block contents %}
+<p>
+{% if formg %}
+	<form action='.' method='POST'>
+	{% csrf_token %}
+	{{ formg.as_p }}
+<input type='submit' value='cadastrar!' name='cadastrar' class='button'>
+{% endif %}
+{% if form %}
+	<form action='.' method='POST'>
+	{% csrf_token %}
+	{{ form.as_p }}
+<h5>se o empreendimento ainda não está cadastrado, cadastre-o
+	<a href='{% url gerencia:novoempree %}'> aqui </a>
+</h5>
+<input type='submit' value='consultar!' name='consultar' class='button'>
+<input type='submit' value='gerenciar!' name='gerenciar' class='button'>
+{% endif %}
+{%block consulta%}{%endblock%}
+<p>
+<br></br><br></br><br></br><br></br>
+_____________________
+<br>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial</a>
+</p>
+<ul>
+{% endblock %}

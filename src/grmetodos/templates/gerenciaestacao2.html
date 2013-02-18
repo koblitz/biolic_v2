@@ -1,0 +1,22 @@
+{%comment%}{%if d4%}
+{%for i in d4%}
+{%for ii in i%}
+
+{%if forloop.first %}
+<p><i>estacao</i>{%endif%}
+<p>{{ii.quantidade}} de {{ii.apettipo.quanttipoapet}} <b>{{ii.apettipo.apetrecho}}</b>
+{%endfor%}{%endfor%}
+{%endif%}
+{%endcomment%}
+{%if coll_form_p_apaga%}
+	<form action='.' method='POST'>
+		{%for form in coll_form_p_apaga%}
+		{% csrf_token %}	
+		<p>{{ form.as_p }}
+		{%if form.help_text%}
+		{%for i3 in form.help_text%}
+		<p>{{i3}}
+			{%endfor%}{%endif%}
+		{%endfor%}
+{%endif%}
+<input type='submit' value='{{botao}}' name='concluir' class='button'>

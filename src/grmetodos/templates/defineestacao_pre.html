@@ -1,0 +1,32 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+<p> ATENÇÃO: No fim da página existem as decrições das estações e dos apetrechos. Abaixo desse está o botão para 'enviar'.
+
+<form id='formall' action='.' method='POST'>
+<h4></h4>
+
+
+{% csrf_token %}
+	
+          
+			{%for pro in ltformT %}
+			{{ pro.management_form }}
+			{%for field in pro.form%}
+				<p>{{field}}{%endfor%}
+			{%endfor%}
+	
+
+{%comment%}
+   {{ formset_telefon.management_form }}
+    {% for form in formset_telefon %}
+            {{ form.id }}
+            <ul>
+	    	<li> {{ form.telefon }} {% if formset_telefon.can_delete %} {{ form.DELETE }}- удалить {% endif %}
+        	</ul>
+    {% endfor %}
+{%endcomment%}
+
+<p><input type="submit" name="form-all-buttom" />
+</form>
+{% endblock %}
+

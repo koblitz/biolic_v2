@@ -1,0 +1,46 @@
+{% extends 'get_file.html' %}
+{% block cont1 %}
+ERROS AQUI:
+{%if lista_erro_doc%}
+É preciso ter um doc 'esforc'e outro doc 'biodiv' para cada uma das campanhas. A estrutura deve ser:
+../
+metodo_de_ave/1
+               /biodiv.csv
+               /esfor.csv
+			 /2
+               /biodiv.csv
+               /esfor.csv
+herpeto_metodo/1
+                /biodiv.csv
+                /esfor.csv
+			  /1
+                /biodiv.csv
+                /esfor.csv
+			  /2
+                /biodiv.csv
+                /esfor.csv
+			  /3
+                /biodiv.csv
+                /esfor.csv
+
+Os seguintes arquivos estão sem seu correspondente:
+{% for i in lista_erro_doc%}
+-->{{i}}<p>
+{%endfor%}
+{%endif%}
+
+
+{%if lista_erro_verifica%}
+O documento já foi baixado, mas ainda não foi feita o carregamento das informações para o banco!
+<p> 
+Foram encontrados os seguintes erros:
+{%for i in lista_erro_doc%}
+<p>-->{{i}}
+{%endfor%}
+{%endif%}
+As alternativas para esse problema são:
+1) --RECOMENDADO-- Enviar esse realtório de erro para a empresa para que ela corriga as informações.
+2) Contactar o administrador do banco informando o empreendimento e passando esse report. Digite o motivo do envio para o administrador e clique aqui. (Voce já estará enviando o relatório de erros para o administrador dessa forma) (Fazer link para mandar por mail. com GET para o texto)
+{% endblock %}
+
+

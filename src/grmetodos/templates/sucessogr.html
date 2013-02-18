@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block contents %}
+{%if new.empresa%}
+o empresa {{new.empresa}} foi incluida com sucesso!
+{%endif%}
+{%if new.empreendimento%}
+o empreendimento {{new.empreendimento}} foi incluido com sucesso!
+{%endif%}
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+
+</p>
+{% endblock %}

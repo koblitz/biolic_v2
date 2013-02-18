@@ -1,0 +1,42 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+<p> ATENÇÃO: No fim da página existem as decrições das estações e dos apetrechos. Abaixo desse está o botão para 'enviar'.
+<table>
+<form id='formall' action='.' method='POST'>
+<h4></h4>
+{%comment%}{{ ltformT.management_form.TOTAL_FORMS }}
+{{ ltformT.management_form.INITIAL_FORMS }}{%endcomment%}
+
+<td valign='top'><table border='1'>
+
+<th height='50'>Estações do método {{metogrup|capfirst}}</th>
+<th height='50'>Opções de definição ESPACIAL</th>
+<td >{% csrf_token %}
+	{%for formset in ltformT%}{{ formset.management_form }}
+          <tr height='400'> {%for form in formset%}
+			{%for field in form.fields%}<td><p>{{ form }}</td>
+	{%endfor%}{%endfor%}{%endfor%}</tr>
+
+</td></table></td>
+<td><table border='1'>
+{#<th>Estações do método {{metogrup|capfirst}}</th>#}
+<th height='50'>Opções de definição TEMPORAL</th>
+<td>
+	{%for form1 in ltformE%}
+           <tr height='400'> {%for field1 in form1.form%}
+			<td>{% csrf_token %}{{ field1 }}</td>
+	{%endfor%}{%endfor%}</tr>
+
+</td></table>
+</td></table>
+	{% for i in apets%}
+		{%for ii in i %}
+			{%for i3 in ii%}
+			{%if forloop.first%}
+			<p><b>{{i3.metoesta.nome_estac}}</b>{%endif%}
+			<p>-->{%if i3.apettipo.quanttipoapet%}{{i3.apettipo.quanttipoapet}} grupo de {%endif%}{%if i3.apettipo%}{{i3.apettipo}}{%endif%}
+		{%endfor%}{%endfor%}{%endfor%}		
+<p><input type="submit" name="form-all-buttom" />
+</form>
+{% endblock %}
+

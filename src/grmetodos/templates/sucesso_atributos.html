@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block contents %}
+{%if metempl%}
+<p><b>Os atributos dos métodos abaixo foram atualizados com sucesso!</b>
+{%for i in metempl%}
+<p>{{i}}
+ {%endfor%}
+{%endif%}
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+
+</p>
+{% endblock %}

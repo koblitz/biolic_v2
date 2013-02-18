@@ -1,0 +1,76 @@
+{% extends 'montagemmetodo.html' %}
+{%block headmonta %}
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#form1").submit(function(){
+     var opt={
+        url:"{%url grmetodos:gerenciaestacao empree=empree metogrup=metogrup.id %}",
+        {# beforeSend: function(){alert('vai enviar')},#}
+                type:"POST",
+                data:$(this).serialize(),
+                success: function(data){
+                    $("#ufo1").html(data.html)
+                                        }
+                }
+     $.ajax(opt);
+return false;
+  });
+});
+</script>
+
+{%endblock%}
+{% block monta %}
+<h4>Defina o(s) apetrechos escolhendo a(s) estação(ões) para {{metogrup|capfirst}}:</h4>
+<p> ATENÇÃO 1: As características espaciais e temporais das estações serão definidas na etapa subsequente, como por exemplo número de estações por unidade amostral, dias de amostragem, distancia entre apetrechos.
+<p> ATENÇÃO 2: Para retirar as novas estações do quandro 'Estações Atuais' é preciso 'atualizar' a pagina com F5 ou com o comando do seu browser.
+<p> ATENÇÃO 3: Não é possível ter duas estações iguais, portanto não ocorrerá nada se vc tentar incluir uma estação que já existe para o empreendimento. Se quiser duas estações iguais, na etapa subsequente voce indicará quantas dessa estação voce terá.
+<p><b>Estações Montadas, defini-las <a href='{%url grmetodos:defineestacao empree=empree metogrup=metogrup.id %}'>AGORA </a></b>
+<table border='1'>
+
+<td width="250", valign="top">
+-Estações Atuais:
+{%if quantapetesta_ee%}
+{%for i in quantapetesta_ee%}
+{%for ii in i%}
+
+{%if forloop.first %}
+<p><i>{%if ii.metoesta.nome_estac%}{{ii.metoesta.nome_estac}}</i>
+<a href='{%url grmetodos:del_objesta ii.metoesta.id %}'><font size='2'>Apague</font> </a> {%endif%}{%endif%}
+<p>
+<p>{{ii.quantidade}} de {{ii.apettipo.quanttipoapet}} <b>{{ii.apettipo.apetrecho}}</b>
+{%endfor%}{%endfor%}
+{%endif%}
+{% block contents2 %}
+<div id=ufo1></div>
+
+{% endblock %}
+
+</td>
+	<td width="300", valign="top">
+	-Estações a serem adcionadas:
+	<form id="form1" action='.' method='POST'>
+		{%for form in coll_form_ref%}
+		{% csrf_token %}	
+		<p>{{ form.as_p }}
+		{%if form.help_text%}
+		{%for i3 in form.help_text%}
+		<p>{{i3}}
+			{%endfor%}{%endif%}
+		{%endfor%}
+	
+	<input type='submit' value='incluir!' name='incluir' class='button'>
+	{#<input type='submit' value='concluir montagem!' name='concluir' class='button'>#}
+	</form></td>
+<td width="300", valign="top">
+- Apetrechos:
+{%if coll_apetdefis%}
+{% for i in coll_apetdefis%}
+{%for ii in i%}
+{%if forloop.first%}
+<p><b>{{ii.apetrecho}}:</b>
+{%endif%}
+<p>-->{%if ii.valor%}{{ii.valor}}{%endif%} {%if ii.atriunidespa%}{{ii.atriunidespa}}{%endif%} {%if ii.outras_caracteristicas%}{{ii.outras_caracteristicas}}{%endif%}{%endfor%}
+{%endfor%}
+{%endif%}
+</td>
+{%endblock%}

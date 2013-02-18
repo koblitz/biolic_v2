@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block contents %}
+PG-ERRO
+{%if not umatributo%}
+{%for i in lista_erro%}
+{%if i%}
+<p>{{i|cut:"]"|cut:"["}}
+{%endif%}{%endfor%}
+{%else%}
+<p>{{umatributo}}
+{%endif%}
+
+{%load mytags %}
+{%for i in lista_erro%}
+	{% if i%}
+		{% if i|checktype != 'list' %}
+			<p><b>{{i}}</b>
+		{%else%}
+			{%for ii in i%}
+				{% if ii%}
+					{% if ii|checktype != 'list' %}
+						<p><b>{{ii}}</b>
+					{%else%}
+						{%for i3 in ii%} 
+							{%if i3%}
+								{% if i3|checktype != 'list' %}
+									<p><b>{{i3}}</b>
+`								{%else%}								
+									{%for i4 in i3%}
+										{%if i4%}
+											{% if i4|checktype != 'list' %}
+												<p><b>{{i4}}</b>
+`											{%else%}	
+												{%for i5 in i4%}
+													{%if i5%}
+														<p><b>{{i5}}</b>
+													{%endif%}
+												{%endfor%}
+											{%endif%}{%endif%}{%endfor%}
+								{%endif%}{%endif%}{%endfor%}
+					{%endif%}{%endif%}{%endfor%}
+		{%endif%}{%endif%}{%endfor%}
+
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+{% endblock %}

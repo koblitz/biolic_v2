@@ -1,0 +1,30 @@
+{% extends 'get_file.html' %}
+
+{% block cont1 %}
+O documento já foi baixado, mas ainda não foi feita o carregamento das informações para o banco!
+<p> 
+1. Documentos encontrados dentro do zip
+{%for i in lt_arq%}
+-->{{i}}<p>
+{%endfor%}
+<p>
+{%if not errors%}
+Não foram encontrados erros básicos nos arquivos.
+Além de observar que todas as pastas continham as planilhas 'biodiv'e 'esfor', foram verificados se:
+1) As informações são correspondentes ao tipo da coluna. (Por exemplo, uma coluna que só recebe número realmente só tem número.) --OK!--
+2) Os tamanhos das tabelas são correspondentes ao que tem registrado para receber. --OK!
+
+ Eles podem ser carregado para dentro do banco, clique em upload abaixo.
+
+class buttom UPLOAD>
+
+{%endif%}
+{%if errors%}
+{%for i in errors%}
+{{i}}
+{%endfor%}
+{%endif%}
+As alternativas para esse problema são:
+1) --RECOMENDADO-- Enviar esse realtório de erro para a empresa para que ela concerte as informações.
+2) Contactar o administrador do banco informando o empreendimento e passando esse report. Para fazer isso automaticamente, clique aqui. (Fazer link para mandar por mail.)
+{% endblock %}

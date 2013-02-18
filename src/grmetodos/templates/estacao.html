@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block contents %}
+Estação: {{estacao}}
+<p>Características Espaciais:
+{%for i in quantmetoesta%}<p>{{i}}{%endfor%}
+<p>Características Temporais:
+{#{%for it in montatemp%}{%for iit in it%}<p>{{iit.arratempesta}}{%endfor%}{%endfor%}#}
+
+{% endblock %}

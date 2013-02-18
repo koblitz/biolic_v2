@@ -1,0 +1,12 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+
+Método: {{metoemprr.metogrup }}
+{%if  metoestaid %}
+{%else%}
+<p>Não há estações montadas para esse método ainda.
+<p> Monte-as 
+</p>
+{%endif%}
+{%endblock%}
+{#<a href='{% url grmetodos:criaesta empree=empree metogrupid=metoemprr.metogrup.id %}'> aqui </a>#}

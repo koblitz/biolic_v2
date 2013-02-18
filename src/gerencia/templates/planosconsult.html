@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block contents %}
+<p>
+	<a href='{% url consultar:consultasrc empree%}'> observar o plano de trabalho </a>
+</p>
+<p>
+	<a href='{% url consultar:consultasrc empree%}'> imprimir o plano de trabalho </a>
+</p>
+<p>
+	<a href='{% url consultar:consultasrc empree%}'> baixar a planilha dos locais de amostragem </a>
+</p>
+
+
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+{% endblock %}
+

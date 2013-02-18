@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block contents %}
+{%if salvos%}
+	{%for i in salvos%}
+		<p>{{i}}-->Salvo!
+	{%endfor%}
+{%else%}
+	<p>nada salvo
+{%endif%}
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block contents %}
+{%if model1%}
+Item DELETADO: {{data1}}{%endif%}
+{% if item.metoesta %}
+Empreendimento:  {{item.metoesta.metoempr.empreendimento}}
+<p>
+
+Item DELETADO: {{data1}}{{item.arraespaesta}}
+{%endif%}
+</p>
+{% if item.metoestat %}
+Empreendimento:  {{item.metoestat.metoempr.empreendimento}}
+<p>
+
+Item DELETADO: {{item.arratempesta}}
+{%endif%}
+</p>
+<p>
+	<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+{% endblock %}

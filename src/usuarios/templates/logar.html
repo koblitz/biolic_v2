@@ -1,0 +1,8 @@
+{% extends 'base_log.html' %}
+{%block contents%}
+<form action='.' method='POST'>
+{% csrf_token %}
+{{ form.as_p }}
+<input type='submit' value='logar' class='button'>
+
+{%endblock%}

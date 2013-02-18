@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Biolic</title>
+<h3>BioLic</h3>
+{% load static %}
+<script type= "text/javascript" src="{% get_static_prefix %}js/jquery.js">
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+</script>
+{% block head %}{% endblock %}
+</head>
+<body>
+
+{% block contents %}
+_______________________________________
+<p>FIM DA PÁGINA
+{% endblock %}
+
+</body>
+</html>

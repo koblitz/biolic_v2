@@ -1,0 +1,45 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+<p> ATENÇÃO: No fim da página existem as decrições das estações e dos apetrechos. Abaixo desse está o botão para 'enviar'.
+<table>
+<form id='formall' action='.' method='POST'>
+<h4></h4>
+
+<td valign='top'><table border='1'>
+
+<th height='50'>Estações do método {{metogrup|capfirst}}</th>
+<th height='50'>Opções de definição ESPACIAL</th>
+<th height='50'>Opções de definição TEMPORAL</th>
+<form id='formall' action='.' method='POST'>
+{%csrf_token%}
+   {{ formsetT.management_form }}
+    {% for form in formsetT.forms %}
+	<tr>
+		<td>{{ form.initial.metoestat.nome_estac }}</td>
+		<td>{{ form.metoestat }}</td>
+		<td>{{ form.arratempesta }}</td>
+	</tr>
+	{% endfor %}
+	{{ formsetE.management_form }}
+	
+   {% for form in formsetE.forms %}
+	<tr>
+		
+		
+		<td>{{ form.metoesta }}</td>
+		<td>{{ form.arraespaesta }}</td>
+	</tr>
+	{% endfor %}
+ 
+<p><input type="submit" name="form-all-buttom" />
+</form>
+{% endblock %}
+{%comment%}
+WORKS!
+    {{ formsetE.management_form }}
+	
+    {% for form in formsetT %}
+		{{form}}
+		
+    {% endfor %}
+{%endcomment%}

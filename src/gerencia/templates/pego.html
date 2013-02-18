@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block contents %}
+{%if metemp%}
+<p>{{metemp}}
+{%endif%}
+{%if metemps%}
+{%for k,v in metemps.iteritems%}
+<p>{{v}}
+ {%endfor%}
+{%endif%}
+{%if metempl%}
+{%for i in metempl%}
+<p>{{i}}
+ {%endfor%}
+{%endif%}
+{%if form%}
+<form action='.' method='POST'>
+{% csrf_token %}
+<p>{{ form.as_p }}
+{%endif%}
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+{% endblock %}

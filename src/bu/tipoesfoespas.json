@@ -1,0 +1,1 @@
+[{"pk": 4, "model": "dados.tipoesfoespas", "fields": {"descricao": "lances", "tipoesfoespa": "lances"}}, {"pk": 5, "model": "dados.tipoesfoespas", "fields": {"descricao": "peneiradas", "tipoesfoespa": "peneiradas"}}, {"pk": 6, "model": "dados.tipoesfoespas", "fields": {"descricao": "tarrafadas", "tipoesfoespa": "tarrafadas"}}]

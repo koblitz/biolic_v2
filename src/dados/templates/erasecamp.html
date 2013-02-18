@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{%block contents%}
+<p><b>Empreendimento:{{empree|capfirst}}</b>
+{% if preerasecamp %}
+<p><b>As CAMPANHAS apagadas precisarão ser recadastradas.</b>
+<p>Voce tem que ter certeza do que irá fazer.
+<p>A partir dessa simples seleção, serão deletados todos os dados referentes aos levantamentos.
+
+<p>_____________________________
+{% for i in preerasecamp %}
+<p>{{i.metodo.metodo.metogrup.metodo.metodo}}//Campanha: 
+{{i.num_campanha}}  <a href="{% url dados:del_camp pk=i.id empree=empree%}"><font size="1">deletar</font> </a>
+{%endfor%}{%endif%}
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+{%endblock%}

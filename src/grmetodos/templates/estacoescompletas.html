@@ -1,0 +1,24 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+
+<table  border='1'>
+<tr>
+<th height='50'>Estações do método {{metogrup|capfirst}}</th>
+<th height='50'>Opções de definição TEMPORAL</th>
+<th height='50'>Opções de definição ESPACIAL</th>
+
+</tr>
+<tr>
+{%for metoestain in metoestaall%}
+
+<td>{{metoestain.nome_estac}}</td>
+
+<td>{%for i in ltmontatemp%}{%if i.metoestat == metoestain %}
+<p>{{i.arratempesta}}   <a href='{%url grmetodos:del_objtemp i.id%}'><font size='2'>apague</font></a></b>{%endif%}{%endfor%}</td>
+<td>{%for i in ltmontaespa%}{%if i.metoesta == metoestain %}
+<p>-->{{i.arraespaesta}}   <a href='{%url grmetodos:del_objespa i.id%}'><font size='2'>apague</font></a></b>{%endif%}{%endfor%}</td>
+	
+</tr>{%endfor%}</table>
+
+
+{%endblock%}

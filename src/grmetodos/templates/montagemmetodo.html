@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head %}
+{% block headmonta %}
+{%endblock%}
+{%endblock%}
+{% block contents %}
+<p>Montagem de Métodos para: <b>{{empree|capfirst}}</b>
+<p>___________________________________________________________
+<p>
+{% block monta %}
+{%endblock%}
+
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+{%endblock%}
+

@@ -1,0 +1,7 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+<p>Métodos existentes:
+{%for i in listametodos%}
+<p>--{{i.metogrup}}<a href='{%url grmetodos:del_objmet i.id %}'>. Apague </a>  essa método
+{%endfor%}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'montagemmetodo.html' %}
+{% block monta %}
+-Estações Atuais para {{metogrup}}:
+{%if quantapetesta_post%}
+{%for i in quantapetesta_post%}
+{%for ii in i%}
+
+{%if forloop.first %}
+<p><i>{%if ii.metoesta.nome_estac%}{{ii.metoesta.nome_estac}}</i>{%endif%}{%endif%}
+<p>{{ii.quantidade}} de {{ii.apettipo.quanttipoapet}} <b>{{ii.apettipo.apetrecho}}</b>
+{%endfor%}{%endfor%}
+{%endif%}
+{%endblock%}
+

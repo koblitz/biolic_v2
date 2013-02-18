@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block contents %}
+Seus dados estão ok!
+<p> Forma verificados que todos os campos podem entrar no banco.
+<p> Não existe incompatibilidade entre seus dados e o formato dos campos. Essa foi a única verificação feita!
+<p>Voce pode fazer o upload agora.
+<p>O tempo máximo de upload até agora foi de: <8 minutos>
+<form action="{% url dados:retirapop %}" method="get">
+<p><input type="submit" value="Upload" /></p>
+</form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block contents %}
+{% if codcabeca %}
+Voce deseja exportar o resultado em .csv?<a href='{% url consultar:forcsv1 nomecsv='dados_bioticos' codcabeca=codcabeca %}'> aqui </a>
+{% else %}
+Voce deseja exportar o resultado em .csv?<a href='{% url consultar:forcsv2 nomecsv='dados_bioticos' %}'> aqui </a>
+{%endif%}
+</p>
+{%if outros%}<p>{{outros}}{%endif%}
+{%if lgg%}
+{{cabecalho}}
+{%for i in lgg%}
+{%for ii in i%}
+<p>{{ii}}
+{%endfor%}
+{%endfor%}
+{%endif%}
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+{% endblock %}

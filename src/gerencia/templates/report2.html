@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block contents %}
+{%for i in consulta%}
+{{i}}
+{%endfor%}
+<p>
+<a href='{%url gerencia:escolheformin %}'> voltar a tela inicial </a>
+</p>
+
+{% endblock %}
+

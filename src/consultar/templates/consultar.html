@@ -1,0 +1,12 @@
+{% extends 'new.html' %}
+{% block consulta %}
+<p>
+<p>
+	<a href='{% url consultar:cons_pltr empree%}'> consulta o plano de trabalho </a>
+</p>
+<p>
+	<a href='{% url consultar:dados_levant empree%}'> consulta os dados do levantamento </a>
+</p>
+<ul>
+{% block consulta2 %}
+{% endblock %}{% endblock %}
